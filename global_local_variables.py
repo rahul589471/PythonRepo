@@ -7,7 +7,7 @@ def func_test():
     print("value of x inside function  is : ", x)
 
     def test_function():
-        global x
+        #global x
         x = 100
         print("value of x inside-2 function  is : ", x)
 
