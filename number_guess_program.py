@@ -1,7 +1,8 @@
 # input from user
 # number of guesses left
 # total guesses - 9
-# correct answer in number of guesses
+# correct answer in number of guesses5
+
 
 
 print("Hello user. Let's play a game now. I have one number in my mind. You have to guess it in max 9 guessses.\n"

@@ -1,0 +1,15 @@
+Your login info is
+Name- Rahul
+Mobile number-9999999991
+State-haryana
+Father's name-abc
+Your login info is
+Name-aaa
+Mobile number-888888
+State-uhy
+Father's name-hhh
+Your login info is
+Name-aaa
+Mobile number-998989898
+State-kjhjakksfjklsf
+Father's name-fkkhsfjkshfsjksfhskfjs
