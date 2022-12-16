@@ -8,10 +8,14 @@ import wikipedia
 import smtplib
 from googletrans import Translator
 import pywhatkit as kit
+import time
+import requests
 
 
 from Exercises import file_handling
 from Exercises import snake_water_gun
+from Exercises.ETL.simple_etl_project import etl_data_load
+from bs4 import BeautifulSoup
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -27,7 +31,7 @@ def speak(audio):
 def wishme():
     hour = int(datetime.datetime.now().hour)
 
-    if 0 < hour <= 12:
+    if 0 < hour < 12:
         speak("Good morning Rahul")
     elif 12 <= hour < 18:
         speak("Good afternoon Rahul")
@@ -136,6 +140,16 @@ while True:
     elif "stop the music" in query:
         mixer.music.stop()
 
+    elif "temperature" in query:
+        speak("Which location sir")
+        location =takeCommand()
+        search ="temperature in" + location
+        url =f"https://www.google.com/search?q={search}"
+        r = requests.get(url)
+        data =BeautifulSoup(r.text,"html.parser")
+        temp =data.find("div",class_="BNeawe").text
+        speak(f"current {search} is {temp}")
+
     elif "time" in query:
         strTime = datetime.datetime.now().strftime("%H:%M:%S")
         speak(f"Sir, The Time is {strTime}\n")
@@ -188,6 +202,25 @@ while True:
     elif "open sql" in query:
         code_path = "C:\\Users\\Rahul\\Downloads\\sqldeveloper\\sqldeveloper.exe"
         os.startfile(code_path)
+
+    elif "project" in query:
+        speak("Running ETL project")
+        if etl_data_load() ==0:
+            speak("ETL Project run successfully")
+        else:
+            speak("Exception occured in running ETL project")
+        code_path = "C:\\Users\\Rahul\\PycharmProjects\\Python\\Exercises\\ETL\\ETL_process.rtf"
+        os.startfile(code_path)
+        time.sleep(3)
+        speak("This ETL project is build in Python. It extracts data from Oracle database from rahul_source_test "
+              "table")
+        time.sleep(1)
+        speak("Then it apply some transformations using pandas framework.")
+        time.sleep(1)
+        speak("Finally loaded data into rahul_target_test table.")
+        speak("Let me open sql database now to check exact data loaded into target table")
+        sql_code_path = "C:\\Users\\Rahul\\Downloads\\sqldeveloper\\sqldeveloper.exe"
+        os.startfile(sql_code_path)
 
     elif "send an email" in query:
         try:
