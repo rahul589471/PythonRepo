@@ -1,0 +1,66 @@
+import collections
+from collections import namedtuple
+from collections import deque
+from collections import ChainMap
+from collections import Counter
+from collections import OrderedDict
+from collections import defaultdict
+
+############# namedtuple ################
+a= namedtuple('name','rollno,address,empid')
+b= a(11,'abc',333)
+
+print(b)
+
+#########     deque ################
+d= deque([1,2,3,4,5,6,7,8,9])
+print(d)
+
+d.reverse()
+print(d)
+
+d.appendleft('python')
+print(d)
+
+d.append('programming')
+print(d)
+
+d.popleft()
+print(d)
+
+d.pop()
+print(d)
+
+#########     ChainMap ################
+d = {1:'e', 2:'f', 3:'f',5:6}
+e= {11:'eee', 2:'ffff', 3:'rahul',5:6}
+print(ChainMap(d,e))
+
+
+####################   Very Important ############################
+############# Counter ################
+d= Counter((1,1,2,2,2,3,3,4,4,4,5,5,6,6,7,7,'abc','def','rahul','rahul','rahul','rahul'))
+print(d)
+
+print(d.items())
+
+print(list(d.elements()))
+
+print(d.most_common())
+
+############# OrderedDict ################
+# It remembers the order in which entries were done
+dict1= {11:'eee', 2:'ffff', 3:'rahul',5:6}
+d= OrderedDict(sorted(dict1.items()))
+print(d)
+
+############# DefaultDict ################
+dict2= {11:'eee', 2:'ffff', 3:'rahul',5:6}
+#print(dict2[6])   -> will throw error
+
+d2=defaultdict(int)
+d2[11] ='fff'
+d2[22] ='aaa'
+print(d2[6]) #  -> will not throw error but return 0
+
+
